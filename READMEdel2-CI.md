@@ -2,7 +2,7 @@ Del 2- CI
 
 Oppgave 3
 
-Gåt til din fork av dette repoet.
+Går til din fork av dette repoet.
 Gå til Settings/Branches og Se etter seksjonen "Branch Protection Rules".
 Velg Add
 Velg main Som branch
