@@ -19,6 +19,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
-          docker build . -t viba003-private .
-          docker tag viba003-private:latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
+          rev=$(git rev-parse --short HEAD)
+          docker build . -t latest .
+          docker tag latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003:$rev
+          docker tag latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
+          ocker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
