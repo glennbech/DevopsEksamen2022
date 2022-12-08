@@ -8,3 +8,22 @@ For at worfilen skal kunne fungere med din DockerHub konto så må du gjøre noe
 Etter du har gjort dette så skal action kjøres helt fint
 Grunnen til at workfilen ikke fungerte er fordi vi ikke hadde puttet noen github action secret i repository vårrt
 og det var en liten feil i selve workfilen der det sto ${{ secrets.DOCKER_HUB_TOKEN } istedenfor ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+Oppgave 3 
+Beskriv deretter med egne ord hva sensor må gjøre for å få sin fork til å laste opp container image til sitt eget ECR repo
+For å kunne laste opp container image til sitt eget ECR repo så må du gjøre noen punkter
+.Fra dit Cloud9 miljøe, autentiser docker mot AWS ECR med kommandoen
+aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
+
+.For å kunne Pushe et container image til dit ECR repository så må du: 
+docker build -t <ditt tagnavn> .
+docker tag <ditt tagnavn> 244530008913.dkr.ecr.eu-west-1.amazonaws.com/<ditt ECR repo navn>
+docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/<ditt ECR repo navn>
+
+.Gå til docker.yml og endre 
+          docker build . -t latest 
+          docker tag latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
+          til det du skrev ovenfor i punkt 2. 
+          
+.Deretter kan du kjøre workflow og se i ECR at det har kommet en image tag
