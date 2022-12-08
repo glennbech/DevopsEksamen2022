@@ -20,7 +20,7 @@ jobs:
         run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
-          docker build . -t latest 
+          docker build -t latest . 
           docker tag exam 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003:$rev
           docker tag exam 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003-private:latest
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/viba003:$rev
