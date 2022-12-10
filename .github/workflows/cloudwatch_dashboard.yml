@@ -2,11 +2,11 @@ name: "Terraform CloudWatch"
 defaults:
   run:
     working-directory: infra
-  on:
+ on:
     push: 
        branches: [ main ]
     pull_request:
-  workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
   terraform:
