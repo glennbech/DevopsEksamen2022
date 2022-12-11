@@ -2,6 +2,7 @@ name: "Terraform CloudWatch"
 defaults:
   run:
     working-directory: infra
+    
   on:
     push:
       branches: [ main ]
