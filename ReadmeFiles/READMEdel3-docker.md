@@ -12,7 +12,11 @@ og det var en liten feil i selve workfilen der det sto ${{ secrets.DOCKER_HUB_TO
 Oppgave 3 
 Beskriv deretter med egne ord hva sensor må gjøre for å få sin fork til å laste opp container image til sitt eget ECR repo
 For å kunne laste opp container image til sitt eget ECR repo så må du gjøre noen punkter
-.Fra dit Cloud9 miljøe, autentiser docker mot AWS ECR med kommandoen
+
+.Du må først lage secrets i AWS. Der kommer du til å få acce key ID og secret access key, 
+Dette er info som du må putte inn i github repo secret.
+
+.Fra dit Cloud9 miljø, autentiser docker mot AWS ECR med kommandoen
 aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
 
 .For å kunne Pushe et container image til dit ECR repository så må du: 
